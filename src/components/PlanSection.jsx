@@ -8,7 +8,7 @@ const plans = [
     id: 1,
     title: "One-Time Setup Fee",
     subtitle: "Required once per Echo",
-    price: "$50",
+    price: 50,
     period: "once",
     popular: false,
     features: [
@@ -22,8 +22,8 @@ const plans = [
     id: 2,
     title: "Full Access Plan",
     subtitle: "Everything except family sharing",
-    price: "$14.99",
-    period: "/month",
+    price: 14.99,
+    period: "",
     popular: true,
     features: [
       "AI voice echo",
@@ -38,8 +38,8 @@ const plans = [
     id: 3,
     title: "Family Add-On Seats",
     subtitle: "Individual seats (1–4 members)",
-    price: "$4.99",
-    period: "/month each",
+    price: 4.99,
+    period: " each",
     popular: false,
     features: [
       "Add 1–4 additional members",
@@ -53,8 +53,8 @@ const plans = [
     id: 4,
     title: "Family Plan",
     subtitle: "Up to 5 family members included",
-    price: "$14.99",
-    period: "/month",
+    price: 14.99,
+    period: "",
     popular: false,
     features: [
       "Up to 5 family members included",
@@ -117,7 +117,7 @@ const PlanSection = () => {
 
         {/* PLANS GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-7.5">
-          {plans.map((plan) => (
+          {plans.map((plan, idx) => (
             <div
               key={plan.id}
               className=" bg-white rounded-[20px] shadow-sm flex flex-col"
@@ -143,9 +143,13 @@ const PlanSection = () => {
 
                 <div className="flex items-end gap-1 mb-4 md:mb-6">
                   <span className="text-[30px] md:text-4xl font-bold text-white">
-                    {plan.price}
+                    $
+                    {active === "yearly"
+                      ? plan.price.toFixed(2) * 12
+                      : plan.price.toFixed(2)}
                   </span>
                   <span className="text-base font-jost  text-[#FFFFFFB2]">
+                    {idx == 0 ? "" : active === "yearly" ? "/year" : "/month"}
                     {plan.period}
                   </span>
                 </div>

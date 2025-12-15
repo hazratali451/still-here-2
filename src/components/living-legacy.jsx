@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Camera from "../assets/icons/camera";
 import Forever from "../assets/icons/forever";
 import Messages from "../assets/icons/messages";
@@ -7,6 +8,7 @@ import Button from "./ui/Button";
 import HeadingText from "./ui/HeadingText";
 
 const LivingLegacy = () => {
+  const [activeTab, setActiveTab] = useState("Your love");
   return (
     <section className="py-12.5 md:py-30 bg-[#EEF1FB] px-4 lg:px-0">
       <div className="max-w-330.5 mx-auto">
@@ -18,15 +20,18 @@ const LivingLegacy = () => {
           Give your family something only you can give.
         </h5>
         <div className="flex items-center justify-center gap-2 md:gap-4.5 pt-6 md:pt-12.5 pb-3.25 md:pb-7.5">
-          <Button
-            text="Your stories"
-            className="bg-transparent border border-[#000000] text-midnight-blue"
-          />
-          <Button text="Your love" className="bg-secondary text-white" />
-          <Button
-            text="Your voice"
-            className="bg-transparent border border-[#000000] text-midnight-blue"
-          />
+          {["Your stories", "Your love", "Your voice"].map((it, idx) => (
+            <Button
+              onClick={() => setActiveTab(it)}
+              text={it}
+              key={idx}
+              className={` border border-[#000000] transition-all ease-linear duration-300   ${
+                activeTab === it
+                  ? "bg-secondary text-white"
+                  : "text-midnight-blue bg-transparent "
+              }`}
+            />
+          ))}
         </div>
         <p className="text-black font-jost text-sm md:text-[22px] text-center">
           in your own words, in your own sound, exactly as they remember it.

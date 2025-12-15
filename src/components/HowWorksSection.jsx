@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import ArrowDashed from "../assets/icons/ArrowDashed";
 
 const HowWorksSection = () => {
+  const [activeTab, setActiveTab] = useState("others");
   return (
     <section className="lg:py-27.5 py-12.5 bg-[#0E7C8B] relative overflow-hidden px-[35px_32px]">
       <div className="max-w-332.5 mx-auto relative z-2">
@@ -10,10 +11,20 @@ const HowWorksSection = () => {
             How It Works
           </h2>
           <div className="flex lg:gap-4.5 gap-3 lg:mt-7.5 mt-6">
-            <button className="lg:h-15.75 h-9.75 flex items-center justify-center lg:rounded-[10px] rounded-[5px] lg:border border-[0.5px] border-white/25 px-4.5 lg:px-7.5 py-4 text-white hover:text-midnight-blue hover:bg-white font-jost lg:text-2xl sm:text-sm text-[11.5px] font-medium leading-[120%] bg-[#F43E5A] transition-all duration-300 ease-linear">
+            <button
+              className={`lg:h-15.75 h-9.75 flex items-center justify-center lg:rounded-[10px] rounded-[5px] lg:border border-[0.5px] border-white/25 px-4.5 lg:px-7.5 py-4 text-white  font-jost lg:text-2xl sm:text-sm text-[11.5px] font-medium leading-[120%]  transition-all duration-300 ease-linear ${
+                activeTab === "others" ? "bg-[#F43E5A]" : ""
+              }`}
+              onClick={() => setActiveTab("others")}
+            >
               Life Echo for others
             </button>
-            <button className="lg:h-15.75 h-9.75 flex items-center justify-center lg:rounded-[10px] rounded-[5px] lg:border border-[0.5px] border-white px-4.5 lg:px-7.5 py-4 text-white hover:text-midnight-blue hover:bg-white font-jost lg:text-2xl sm:text-sm text-[11.5px] font-medium leading-[120%] transition-all duration-300 ease-linear">
+            <button
+              className={`lg:h-15.75 h-9.75 flex items-center justify-center lg:rounded-[10px] rounded-[5px] lg:border border-[0.5px] border-white px-4.5 lg:px-7.5 py-4 text-white  font-jost lg:text-2xl sm:text-sm text-[11.5px] font-medium leading-[120%] transition-all duration-300 ease-linear ${
+                activeTab === "yourself" ? "bg-[#F43E5A]" : ""
+              }`}
+              onClick={() => setActiveTab("yourself")}
+            >
               Life Echo for yourself
             </button>
           </div>
